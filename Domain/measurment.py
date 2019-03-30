@@ -1,5 +1,4 @@
 import ast
-import datetime
 from datetime import datetime
 
 import requests
@@ -62,7 +61,7 @@ class Measurement(object):
             except:
                 print("The response of probe id %s was not valid" % response_probe_id)
         self.number_of_requests = count_of_valid_responses
-        print("The number of requests is %s at %s" % (str(count_of_valid_responses), str(datetime.datetime.now())))
+        print("The number of requests is %s at %s" % (str(count_of_valid_responses), str(datetime.now())))
 
 
 if __name__ == '__main__':

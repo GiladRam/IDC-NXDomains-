@@ -66,10 +66,32 @@ class DNSESDataCollector(object):
         }
     }
 
-    BASE_SHOULD = {
+    BASE_SHOULD_IDENTICAL = {
         "query": {
             "bool": {
-                "should": []
+                "must": [
+                    {
+                        "term": {
+                            "type": "dns"
+                        }
+                    },
+                    {
+                        "script": {
+                            "script": {
+                                "inline": "boolean compare(Supplier s, def v) {return s.get() == v;}compare(() -> { doc['resource'].value.contains(doc['client_ip'].value) }, params.value);",
+                                "lang": "painless",
+                                "params": {
+                                    "value": True
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "bool": {
+                            "should": []
+                        }
+                    }
+                ]
             }
         }
     }
@@ -100,11 +122,11 @@ class DNSESDataCollector(object):
         return relevant_dns_servers
 
     def collect_data_on_measurement(self, measurement):
-        base_should_query = copy.deepcopy(self.BASE_SHOULD)
+        base_should_query = copy.deepcopy(self.BASE_SHOULD_IDENTICAL)
         for dns_query_name in measurement.dns_questions:
             base_term_query = copy.deepcopy(self.BASE_TERM)
             base_term_query['term']['resource'] = dns_query_name
-            base_should_query['query']['bool']['should'].append(base_term_query)
+            base_should_query['query']['bool']['must'][2]['bool']['should'].append(base_term_query)
 
         result = self.es_client.search(self.index, body=base_should_query, size=10000)
         if "hits" in result:

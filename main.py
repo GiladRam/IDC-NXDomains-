@@ -6,7 +6,7 @@ from Util import ripe_util
 
 if __name__ == '__main__':
     collector = es_data_collector.DNSESDataCollector(["localhost"], "packetbeat*")
-    producer = es_data_producer.ESDataProducer(1, ["localhost"])
+    producer = es_data_producer.ESDataProducer(8, ["localhost"])
     measurements, experiment_end_time = ripe_util.run_experiment(8, 10)
     experiment_end_time = datetime.fromtimestamp(experiment_end_time)
     now = datetime.now()
@@ -27,4 +27,4 @@ if __name__ == '__main__':
         print("Merging measurement results with data from ES.")
         print("----------------------------------------------------------------------")
         collector.collect_data_on_measurement(measurement)
-        producer.index_data(measurements)
+    producer.index_data(measurements)

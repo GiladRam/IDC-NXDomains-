@@ -84,7 +84,7 @@ def run_experiment(experiment_num, size):
             print("There was a problem creating a measurement")
             print(response)
 
-        return measurements, stop_time
+    return measurements, stop_time
 
 
 if __name__ == '__main__':
