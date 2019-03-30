@@ -1,5 +1,6 @@
 import ast
 import datetime
+from datetime import datetime
 
 import requests
 from ripe.atlas.sagan import DnsResult
@@ -17,7 +18,7 @@ class Measurement(object):
         self.dns_questions = set()
         self.number_of_requests = 0
         self.number_of_uncached_requests = 0
-        self.capture_time = 0
+        self.timestamp = datetime.now()
 
     @staticmethod
     def translate_to_es_doc(index, item):
