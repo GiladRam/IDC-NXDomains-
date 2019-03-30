@@ -1,8 +1,8 @@
 # IDC-NXDomains-
 
-![alt text](https://imgur.com/oKb6twJ)
+![alt text](https://i.imgur.com/oKb6twJ.png)
 
-![alt text](https://imgur.com/rCnpOr4)
+![alt text](https://i.imgur.com/rCnpOr4.png)
 
 
 The Domain Name System is one of the most vital protocols of the modern internet.
