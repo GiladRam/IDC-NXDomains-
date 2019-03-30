@@ -1,4 +1,10 @@
 # IDC-NXDomains-
+
+![alt text](https://imgur.com/oKb6twJ)
+
+![alt text](https://imgur.com/rCnpOr4)
+
+
 The Domain Name System is one of the most vital protocols of the modern internet.
 The workflow of the protocol has been researched constantly due to his profound impact on the operation of the Internet. Since name resolution is a necessary step in almost any Internet activity. DNS query overload at authoritative servers has the potential to denial a service to major websites, especially at Public DNS services. One way to apply it is creating a DDOS Attack on the internet's DNS services like the huge October 2016 attack against Dyn [3] on it authoritative servers, resulting in disruptions at a number of prominent websites, including Twitter, Netflix and the New York Times [4].
 There are many stages involved to fully resolve a DNS. The goal is to get an IP Address (A or AAAA record), but there is a variety of RR (resource records) to get the DNS hierarchy work (NS, MX, SOA records or DNSSEC records). Usually, a stub (resolver) ask for an IP Address in a form of an A record and then a hierarchy of recursive servers come into action and create multiple queries transaction to authoritative and root servers in order to complete the process.
